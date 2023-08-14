@@ -1,5 +1,6 @@
 
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class LargestSum {
     /**
@@ -10,6 +11,17 @@ public class LargestSum {
      * @return the largest possible sum of separate numbers from nums.
      */
     public int bigSum(List<Integer> nums){
-        return 0;
+
+        // if List is sorted, sum of last two elements will be largest sum, duplicates or not
+        // can sort List with Collections.sort(nums) method or List.sort(null)
+        // can also sort using stream API, but requires creation of another List or update of current one
+
+        //Collections.sort(nums);
+
+        //nums.sort(null);
+
+        nums = nums.stream().sorted().collect(Collectors.toList());
+
+        return nums.get(nums.size() -2) + nums.get(nums.size() - 1);
     }
 }
